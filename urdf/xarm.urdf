@@ -17,12 +17,11 @@
         </visual>
     </link>
 
-    <joint name="base_link1_joint" type="revolute">
+    <joint name="base_link1_joint" type="continuous">
         <origin xyz="0 0 0.173" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
         <child link="link1"/>
         <axis xyz="0 0 1"/>
-        <limit lower="-3.14" upper="3.14" effort="0.0" velocity="0.0"/>
     </joint>
 
     <link name="link2">
@@ -34,10 +33,12 @@
         </visual>
     </link>
 
-    <joint name="link1_link2_joint" type="fixed">
+    <joint name="link1_link2_joint" type="revolute">
         <origin xyz="0 0.07 0" rpy="-1.6 -1.6 0.0"/>
         <parent link="link1"/>
         <child link="link2"/>
+        <axis xyz="0 0 1" />
+        <limit lower="-2.02" upper="2.02" velocity="0.0" effort="0.0" />
     </joint>
 
     <link name="link3">
@@ -55,22 +56,24 @@
         <parent link="link2"/>
         <child link="link3"/>
         <axis xyz="0 0 1"/>
-        <limit lower="0" upper="3.14" effort="0.0" velocity="0.0"/>
+        <limit lower="-0.06" upper="5.24" effort="0.0" velocity="0.0"/>
     </joint>
 
     <link name="link4">
         <visual>
-            <origin xyz="0 -0.03 0.18" rpy="0 0 0.0"/>
+            <origin xyz="0 0.0001 0.18" rpy="0 0 -0.0001"/>
             <geometry>
                 <mesh filename="package://ufactory-xarm-lite-6/meshes/link4.stl" scale="1.0 1.0 1.0"/>
             </geometry>
         </visual>
     </link>
 
-    <joint name="link3_link4_joint" type="fixed">
-        <origin xyz="0.1 -0.03 0.026" rpy="1.54 6.5 0.0"/>
+    <joint name="link3_link4_joint" type="continuous">
+        <!-- <origin xyz="0.1 -0.03 0.1" rpy="1.54 6.5 0.0"/> -->
+        <origin xyz="0.09 -0.03 0.008" rpy="1.5 6.4 0"/>
         <parent link="link3"/>
         <child link="link4"/>
+        <axis xyz="0 0 1" />
     </joint>
 
     <link name="link5">
@@ -82,10 +85,12 @@
         </visual>
     </link>
 
-    <joint name="link4_link5_joint" type="fixed">
+    <joint name="link4_link5_joint" type="revolute">
         <origin xyz="-0.01 -0.039 0.18" rpy="1.6 0.0 0.1"/>
         <parent link="link4"/>
         <child link="link5"/>
+        <axis xyz="0 0 1" />
+        <limit lower="-2.16" upper="2.16" velocity="0.0" effort="0.0" />
     </joint>
 
     <link name="link6">
@@ -101,6 +106,7 @@
         <origin xyz="0 0.04 -0.001" rpy="1.5 -3.1 0"/>
         <parent link="link5"/>
         <child link="link6"/>
+        <axis xyz="0 0 1" />
     </joint>
 
     <link name="gripper_link">
@@ -112,14 +118,12 @@
         </visual>
     </link>
 
-    <joint name="gripper_link6_joint" type="fixed">
+    <joint name="gripper_link6_joint" type="continuous">
         <origin xyz="0 0 -0.02" rpy="3.2 0.0 0.0"/>
         <parent link="link6"/>
         <child link="gripper_link"/>
-        <!-- <axis xyz="1 0 0"/>
-        <limit lower="0" upper="3.14" effort="0.0" velocity="0.0"/> -->
+        <axis xyz="0 0 1" />
     </joint>
+    
 
 </robot>
-
-<!-- git init here:: /home/alijoe/Documents/robotics/task-4-submission/task-4-ws/ufactory-xarm-lite-6 -->
