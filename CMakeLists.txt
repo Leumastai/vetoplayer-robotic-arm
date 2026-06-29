@@ -23,7 +23,8 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-INSTALL (DIRECTORY meshes urdf
+# install everything at once
+INSTALL (DIRECTORY meshes urdf rviz launch
   DESTINATION share/${PROJECT_NAME}/)
 
 ament_package()
